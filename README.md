@@ -18,18 +18,18 @@ ________________________________________________________________________________
 _______________________________________________________________________________________________________________________
 
 ### Application Instructions
-1. * "node liri.js concert-this <artist/band name here>" will display:*
+1. _"node liri.js concert-this <artist/band name here>" will display:_
     * Name of the venue
     * Venue location
     * Date of the Event (MM/DD/YYYY)
 
-1. * "node liri.js spotify-this-song <song name here>" will display:*
+1. _"node liri.js spotify-this-song <song name here>" will display:_
     * Artist(s)
     * The song's name
     * A preview link of the song from Spotify
     * The album that the song is from
 
-1. * "node liri.js movie-this <movie name here>" will display:*
+1. _"node liri.js movie-this <movie name here>" will display:_
     * Title of the movie.
     * Year the movie came out.
     * IMDB Rating of the movie.
@@ -39,6 +39,6 @@ ________________________________________________________________________________
     * Plot of the movie.
     * Actors in the movie.
 
-1. * "node liri.js do-what-it-says" will spotify-this-song "I Want it That Way" as directed in the random.txt file. *
+1. _"node liri.js do-what-it-says" will spotify-this-song "I Want it That Way" as directed in the random.txt file._
 _______________________________________________________________________________________________________________________
  
