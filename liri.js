@@ -26,12 +26,14 @@ var search = process.argv[3];
 
 function concertThis (search) {
     
-axios.get("https://rest.bandsintown.com/artists/" + search + "/events?app_id=codingbootcamp").then(
-  function (response) {
-    console.log(response);
-    // console.log("Name of the venue:", response.data?);
-    // console.log("Venue location:", response.data?); 
-    // console.log("Date of the Event:", response.data?);
+axios.get("https://rest.bandsintown.com/artists/" + search + "/events?app_id=codingbootcamp")
+.then(function (response) {
+    //console.log(response);
+    console.log("**************************************************");
+    console.log("Name of the venue:", response.data[0].venue.name);
+    console.log("Venue location:", response.data[0].venue.city); 
+    console.log("Date of the Event:", response.data[0].venue.date);
+    console.log("**************************************************");
   })
   .catch(function (error) {
     console.log(error);
