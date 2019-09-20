@@ -41,8 +41,20 @@ inquirer
 })
 
 function concertThis () {
+  inquirer
+  .prompt([
+    // Prompt the user to select an option from the list
+    {
+      type: "input",      
+      message: "Please enter a band/artist name.",    
+      name: "band"      
+    },
+        
+  ])
+  .then(function(inquirerResponse) {
+    
 
-axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp").then(
+axios.get("https://rest.bandsintown.com/artists/" + band + "/events?app_id=codingbootcamp").then(
   function(response) {
     console.log(response.data);
   })
@@ -66,4 +78,5 @@ axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=cod
     }
     console.log(error.config);
   });
-}
+})
+};
