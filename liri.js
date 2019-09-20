@@ -43,7 +43,7 @@ inquirer
 function concertThis () {
   inquirer
   .prompt([
-    // Prompt the user to select an option from the list
+    // Prompt the user to enter an artist or band name
     {
       type: "input",      
       message: "Please enter a band/artist name.",    
