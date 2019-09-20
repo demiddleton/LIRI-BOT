@@ -1,10 +1,11 @@
 //require("dotenv").config();
 var fs = require("fs");
 //Use node inquirer to get user input
-var inquirer = require('inquirer');
+//var inquirer = require('inquirer');
 
 var axios = require("axios");
 
+//Create variables to get user input
 var command = process.argv[2];
 var search = process.argv[3];
 
@@ -23,9 +24,9 @@ var search = process.argv[3];
             break;       
     }
 
-function concertThis (band) {
+function concertThis (search) {
     
-axios.get("https://rest.bandsintown.com/artists/" + band + "/events?app_id=codingbootcamp").then(
+axios.get("https://rest.bandsintown.com/artists/" + search + "/events?app_id=codingbootcamp").then(
   function (response) {
     console.log(response);
     // console.log("Name of the venue:", response.data?);
