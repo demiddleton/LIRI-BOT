@@ -1,33 +1,18 @@
 //require("dotenv").config();
-
+var fs = require("fs");
 //Use node inquirer to get user input
 var inquirer = require('inquirer');
 
 var axios = require("axios");
 
-inquirer
-  .prompt([
-    // Prompt the user to select an option from the list
-    {
-      type: "list",      
-      message: "Which command do you want?",
-      choices: ["concert-this", "spotify-this-song", "movie-this", "do-what-it-says"],
-      name: "command"      
-    },
-        
-  ])
-  .then(function(inquirerResponse) {
-    console.log(inquirerResponse);
-    
-  
+var command = process.argv[2];
+var search = process.argv[3];
 
-//   function userPrompt(command, userSearch) {
-    // make a decision based on the command
     switch (command) {
         case "concert-this":
-            concertThis();
+            concertThis(search);
             break;
-        case "spotify-this":
+        case "spotify-this-song":
             spotifyThisSong();
             break;
         case "movie-this":
@@ -37,46 +22,17 @@ inquirer
             doThis();
             break;       
     }
-// }
-})
 
-function concertThis () {
-  inquirer
-  .prompt([
-    // Prompt the user to enter an artist or band name
-    {
-      type: "input",      
-      message: "Please enter a band/artist name.",    
-      name: "band"      
-    },
-        
-  ])
-  .then(function(inquirerResponse) {
+function concertThis (band) {
     
-
 axios.get("https://rest.bandsintown.com/artists/" + band + "/events?app_id=codingbootcamp").then(
-  function(response) {
-    console.log(response.data);
+  function (response) {
+    console.log(response);
+    // console.log("Name of the venue:", response.data?);
+    // console.log("Venue location:", response.data?); 
+    // console.log("Date of the Event:", response.data?);
   })
-  .catch(function(error) {
-    if (error.response) {
-      // The request was made and the server responded with a status code
-      // that falls out of the range of 2xx
-      console.log("---------------Data---------------");
-      console.log(error.response.data);
-      console.log("---------------Status---------------");
-      console.log(error.response.status);
-      console.log("---------------Status---------------");
-      console.log(error.response.headers);
-    } else if (error.request) {
-      // The request was made but no response was received
-      // `error.request` is an object that comes back with details pertaining to the error that occurred.
-      console.log(error.request);
-    } else {
-      // Something happened in setting up the request that triggered an Error
-      console.log("Error", error.message);
-    }
-    console.log(error.config);
+  .catch(function (error) {
+    console.log(error);
   });
-})
-};
+}
