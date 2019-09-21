@@ -24,20 +24,24 @@ var search = process.argv[3];
             break;       
     }
 
+//Create function to handle the concert-this command
 function concertThis (search) {
     
 axios.get("https://rest.bandsintown.com/artists/" + search + "/events?app_id=codingbootcamp")
 .then(function (response) {
    for (var i = 0; i < response.data.length; i++) {
-    //console.log(response);
+  
     console.log("**************************************************");
     console.log("Name of the venue:", response.data[i].venue.name);
     console.log("Venue location:", response.data[i].venue.city); 
     console.log("Date of the Event:", response.data[i].datetime);
     console.log("**************************************************");
    }
+  // console.log(response);
   })
   .catch(function (error) {
     console.log(error);
   });
 }
+
+//Create function to handle the spotify-this-song command
