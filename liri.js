@@ -49,15 +49,17 @@ axios.get("https://rest.bandsintown.com/artists/" + search + "/events?app_id=cod
 //Create function to handle the spotify-this-song command
 function spotifyThisSong (search) {
 var spotify = new Spotify({
-    id: <f7ac5bf4d99e4229a5d7c8e02d2361e9>,
-    secret: <99508fdcd0724ca68e51025bb2416a22>
+    id: ("f7ac5bf4d99e4229a5d7c8e02d2361e9"),
+    secret: ("99508fdcd0724ca68e51025bb2416a22")
   });
-  spotify
-  .request('https://api.spotify.com/v1/tracks/7yCPwWs66K8Ba5lFuU2bcx')
-  .then(function(data) {
-    console.log(data); 
+  spotify.search({ type: 'track', query: search }, function(err, data) {
+    if (err) {
+      return console.log('Error occurred: ' + err);
+    }
+   
+  console.log(data); 
   });
-  .catch(function(err) {
-    console.error('Error occurred: ' + err); 
-  });
+//   .catch(function (error) {
+//     console.log(error);
+//   });
   }
