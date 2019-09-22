@@ -5,6 +5,8 @@ var fs = require("fs");
 
 var axios = require("axios");
 
+var Spotify = require('node-spotify-api');
+
 //Create variables to get user input
 var command = process.argv[2];
 var search = process.argv[3];
@@ -14,7 +16,7 @@ var search = process.argv[3];
             concertThis(search);
             break;
         case "spotify-this-song":
-            spotifyThisSong();
+            spotifyThisSong(search);
             break;
         case "movie-this":
             movieThis();
@@ -45,3 +47,17 @@ axios.get("https://rest.bandsintown.com/artists/" + search + "/events?app_id=cod
 }
 
 //Create function to handle the spotify-this-song command
+function spotifyThisSong (search) {
+var spotify = new Spotify({
+    id: <f7ac5bf4d99e4229a5d7c8e02d2361e9>,
+    secret: <99508fdcd0724ca68e51025bb2416a22>
+  });
+  spotify
+  .request('https://api.spotify.com/v1/tracks/7yCPwWs66K8Ba5lFuU2bcx')
+  .then(function(data) {
+    console.log(data); 
+  });
+  .catch(function(err) {
+    console.error('Error occurred: ' + err); 
+  });
+  }
