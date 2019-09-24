@@ -59,8 +59,8 @@ function spotifyThisSong(search) {
         console.log("**************************************************");
         console.log("Artist(s): " + spotifyData.artists[0].name);
         console.log("Name of song: " + spotifyData.name);
-        // console.log("Preview Link: " + spotifyData.preview_url);
-        // console.log("Album: " + ?);
+        console.log("Preview Link: " + spotifyData.preview_url);
+        console.log("Album: " + spotifyData.album.name);
       }
     } else {
       return console.log('Error occurred: ' + err);
