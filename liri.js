@@ -1,16 +1,18 @@
-//require("dotenv").config();
+require("dotenv").config();
 var fs = require("fs");
 //Use node inquirer to get user input
 //var inquirer = require('inquirer');
 
 var axios = require("axios");
 
+var keys = require("./keys");
+// console.log(keys.spotify);
+
 var Spotify = require('node-spotify-api');
 
 //Create variables to get user input
 var command = process.argv[2];
 var search = process.argv[3];
-
     switch (command) {
         case "concert-this":
             concertThis(search);
@@ -48,25 +50,20 @@ axios.get("https://rest.bandsintown.com/artists/" + search + "/events?app_id=cod
 
 //Create function to handle the spotify-this-song command
 function spotifyThisSong (search) {
-var spotify = new Spotify({
-    id: ("f7ac5bf4d99e4229a5d7c8e02d2361e9"),
-    secret: ("99508fdcd0724ca68e51025bb2416a22")
-  });
+var spotify = new Spotify(keys.spotify);
   spotify.search({ type: 'track', query: search }, function(err, data) {
     if (err) {
       return console.log('Error occurred: ' + err);
     }
    
-  console.log(data); 
+  console.log(data.tracks); 
   });
 //   .catch(function (error) {
 //     console.log(error);
 //   });
   }
 
-  //Create function to handle the movie-thiscommand
-  
-
+//Create function to handle the movie-this command
 function movieThis(search) {
 
   axios.get("http://www.omdbapi.com/?t="+ search + "&y=&plot=short&apikey=trilogy")
@@ -76,7 +73,7 @@ function movieThis(search) {
     console.log("*******************************************************");
     console.log("Title: " + response.data.Title);
     console.log("Year: " + response.data.Year);
-    console.log(" IMDB Rating: " + response.data.imdbRating);
+    console.log("IMDB Rating: " + response.data.imdbRating);
     console.log("Rotten Tomatoes Rating: " + response.data.Ratings[1]);
     console.log("Country produced: " + response.data.Country);
     console.log("Language: " + response.data.Language);

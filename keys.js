@@ -5,6 +5,8 @@ exports.spotify = {
   secret: process.env.SPOTIFY_SECRET
 };
 
-var keys = require("./keys.js");
+// var keys = require("./keys.js");
 
-var spotify = new Spotify(keys.spotify);
+// var spotify = new Spotify(keys.spotify);
+
+// var env = require ("./.env");
