@@ -37,9 +37,9 @@ function concertThis(search) {
       for (var i = 0; i < response.data.length; i++) {
 
         console.log("**************************************************");
-        console.log("Name of the venue:", response.data[i].venue.name);
-        console.log("Venue location:", response.data[i].venue.city);
-        console.log("Date of the Event:", response.data[i].datetime);
+        console.log("Name of the venue: ", response.data[i].venue.name);
+        console.log("Venue location: ", response.data[i].venue.city);
+        console.log("Date of the Event: ", response.data[i].datetime);
       }
       // console.log(response);
     })
