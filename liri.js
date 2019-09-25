@@ -13,6 +13,7 @@ var Spotify = require('node-spotify-api');
 //Create variables to get user input
 var command = process.argv[2];
 var search = process.argv.slice(3).join(" ");
+
 switch (command) {
   case "concert-this":
     concertThis(search);
@@ -63,18 +64,23 @@ function spotifyThisSong(search) {
         console.log("Album: " + spotifyData.album.name);
 
         //Create function to add spotifyData to log.txt
+        // fs.readFile("random.txt", "utf8", function (error, data) {
+        //   if (error) {
+        //     return console.log(red("ERROR" + error));
+        //   }
+        //   else {
+        //     fs.appendFile('log.txt', "***************************************************");
+        //     fs.appendFile('log.txt', spotifyData.artists[0].name);
+        //     fs.appendFile('log.txt', spotifyData.name);
+        //     fs.appendFile('log.txt', spotifyData.preview_url);
+        //     fs.appendFile('log.txt', spotifyData.album.name);
+        //     fs.appendFile('log.txt', "***************************************************");
 
-        // fs.appendFile('log.txt', "***************************************************");
-        // fs.appendFile('log.txt', spotifyData.artists[0].name);
-        // fs.appendFile('log.txt', spotifyData.name);
-        // fs.appendFile('log.txt', spotifyData.preview_url);
-        // fs.appendFile('log.txt', spotifyData.album.name);
-        // fs.appendFile('log.txt', "***************************************************");
+        //   }
+        // });
+
       }
-    } else {
-      return console.log('Error occurred: ' + err);
     }
-
 
   });
 }
@@ -129,11 +135,11 @@ function doThis() {
       return console.log(red("ERROR" + error));
     }
     else {
-      var array = data.split(',');
-      console.log(array);
-      command = array[0];
-      search = array[1];
-    
+      var randomArray = data.split(',');
+      console.log(randomArray);
+      command = randomArray[0];
+      search = randomArray[1];
+
     }
   });
 }
