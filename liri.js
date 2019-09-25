@@ -14,6 +14,9 @@ var Spotify = require('node-spotify-api');
 var command = process.argv[2];
 var search = process.argv.slice(3).join(" ");
 
+checkCommand(command, search);
+
+function checkCommand (command, search){
 switch (command) {
   case "concert-this":
     concertThis(search);
@@ -27,8 +30,11 @@ switch (command) {
   case "do-what-it-says":
     doThis();
     break;
+  default:
+      console.log("Please enter a command.");
+      break;
 }
-
+}
 //Create function to handle the concert-this command
 function concertThis(search) {
 
@@ -136,10 +142,10 @@ function doThis() {
     }
     else {
       var randomArray = data.split(',');
-      console.log(randomArray);
+      //console.log(randomArray);
       command = randomArray[0];
       search = randomArray[1];
-
+      checkCommand (command, search);
     }
   });
 }
