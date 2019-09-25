@@ -12,7 +12,7 @@ var Spotify = require('node-spotify-api');
 
 //Create variables to get user input
 var command = process.argv[2];
-var search = process.argv[3];
+var search = process.argv.slice(3).join(" ");
 switch (command) {
   case "concert-this":
     concertThis(search);
@@ -63,7 +63,7 @@ function spotifyThisSong(search) {
         console.log("Album: " + spotifyData.album.name);
 
         //Create function to add spotifyData to log.txt
-       
+
         // fs.appendFile('log.txt', "***************************************************");
         // fs.appendFile('log.txt', spotifyData.artists[0].name);
         // fs.appendFile('log.txt', spotifyData.name);
@@ -82,7 +82,7 @@ function spotifyThisSong(search) {
 //Create function to handle the movie-this command
 function movieThis(search) {
 
-  if(search === "") {
+  if (search === "") {
     movieThis("Mr. Nobody");
   }
 
@@ -120,4 +120,20 @@ function movieThis(search) {
       }
       console.log(error.config);
     });
+}
+
+//Create a function to handle the do-what-it-says command
+function doThis() {
+  fs.readFile("random.txt", "utf8", function (error, data) {
+    if (error) {
+      return console.log(red("ERROR" + error));
+    }
+    else {
+      var array = data.split(',');
+      console.log(array);
+      command = array[0];
+      search = array[1];
+    
+    }
+  });
 }
