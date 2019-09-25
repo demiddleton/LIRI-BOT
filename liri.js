@@ -61,6 +61,15 @@ function spotifyThisSong(search) {
         console.log("Name of song: " + spotifyData.name);
         console.log("Preview Link: " + spotifyData.preview_url);
         console.log("Album: " + spotifyData.album.name);
+
+        //Create function to add spotifyData to log.txt
+       
+        // fs.appendFile('log.txt', "***************************************************");
+        // fs.appendFile('log.txt', spotifyData.artists[0].name);
+        // fs.appendFile('log.txt', spotifyData.name);
+        // fs.appendFile('log.txt', spotifyData.preview_url);
+        // fs.appendFile('log.txt', spotifyData.album.name);
+        // fs.appendFile('log.txt', "***************************************************");
       }
     } else {
       return console.log('Error occurred: ' + err);
@@ -73,6 +82,10 @@ function spotifyThisSong(search) {
 //Create function to handle the movie-this command
 function movieThis(search) {
 
+  if(search === "") {
+    movieThis("Mr. Nobody");
+  }
+
   axios.get("http://www.omdbapi.com/?t=" + search + "&y=&plot=short&apikey=trilogy")
     .then(function (response) {
       //console.log(response.data);
@@ -81,7 +94,7 @@ function movieThis(search) {
       console.log("Title: " + response.data.Title);
       console.log("Year: " + response.data.Year);
       console.log("IMDB Rating: " + response.data.imdbRating);
-      console.log("Rotten Tomatoes Rating: " + response.data.Ratings[1]);
+      console.log("Rotten Tomatoes Rating: " + response.data.Ratings[1].Value);
       console.log("Country produced: " + response.data.Country);
       console.log("Language: " + response.data.Language);
       console.log("Plot: " + response.data.Plot);
