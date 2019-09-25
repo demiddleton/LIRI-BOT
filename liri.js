@@ -57,6 +57,9 @@ function concertThis(search) {
 //Create function to handle the spotify-this-song command
 function spotifyThisSong(search) {
   var spotify = new Spotify(keys.spotify);
+  if (!search) {
+    search = "The Sign";
+  }
 
   spotify.search({ type: 'track', query: search }, function (err, data) {
     if (!err) {
@@ -94,8 +97,8 @@ function spotifyThisSong(search) {
 //Create function to handle the movie-this command
 function movieThis(search) {
 
-  if (search === "") {
-    movieThis("Mr. Nobody");
+  if (!search) {
+    search = "Mr. Nobody";
   }
 
   axios.get("http://www.omdbapi.com/?t=" + search + "&y=&plot=short&apikey=trilogy")
