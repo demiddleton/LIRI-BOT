@@ -73,20 +73,16 @@ function spotifyThisSong(search) {
         console.log("Album: " + spotifyData.album.name);
 
         //Create function to add spotifyData to log.txt
-        // fs.readFile("random.txt", "utf8", function (error, data) {
-        //   if (error) {
-        //     return console.log(red("ERROR" + error));
-        //   }
-        //   else {
-        //     fs.appendFile('log.txt', "***************************************************");
-        //     fs.appendFile('log.txt', spotifyData.artists[0].name);
-        //     fs.appendFile('log.txt', spotifyData.name);
-        //     fs.appendFile('log.txt', spotifyData.preview_url);
-        //     fs.appendFile('log.txt', spotifyData.album.name);
-        //     fs.appendFile('log.txt', "***************************************************");
+       
+            fs.appendFile('log.txt', "***************************************************");
+            fs.appendFile('log.txt', spotifyData.artists[0].name);
+            fs.appendFile('log.txt', spotifyData.name);
+            fs.appendFile('log.txt', spotifyData.preview_url);
+            fs.appendFile('log.txt', spotifyData.album.name);
+            fs.appendFile('log.txt', "***************************************************");
 
-        //   }
-        // });
+          
+        
 
       }
     }
